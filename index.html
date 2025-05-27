@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta name="description" content="Portofolio Zeinul Muhaemin, Web Developer yang berfokus pada solusi digital efisien dan user-friendly.">
+  <meta name="keywords" content="Web Developer, Portofolio, E-commerce, Trading Robot, HTML, CSS, JavaScript, Python">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zeinul Muhaemin - Web Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800&display=swap" rel="stylesheet" />
+  <style>
+    body { 
+      font-family: 'Inter', sans-serif; 
+      transition: background 0.3s, color 0.3s; 
+      background: linear-gradient(to bottom, #d1fae5, #ffffff);
+      color: #064e3b;
+    }
+    nav .space-x-4 a {
+      padding: 0.25rem 0.5rem;
+    }
+    section {
+      scroll-margin-top: 80px;
+    }
+    @media (max-width: 640px) {
+      #main-title {
+        font-size: 2.25rem; /* text-4xl */
+      }
+      #main-desc {
+        font-size: 1.125rem; /* text-lg */
+      }
+    }
+    footer {
+      margin-top: 4rem;
+    }
+    .dark {
+      background-color: #1f2937; 
+      color: white; 
+    }
+    .dark .bg-white { background-color: #111827 !important; }
+    .dark .text-gray-700 { color: #d1d5db !important; }
+    .dark .text-green-700 { color: #6ee7b7 !important; }
+    .dark .bg-green-50 { background-color: #1f2937 !important; }
+    .dark .border { border-color: #374151 !important; }
+    h1, h2, h3, h4 {
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-shadow: 0 0 5px rgba(6, 78, 59, 0.25);
+      transition: color 0.4s ease;
+    }
+    p, span, a {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: #065f46;
+      transition: color 0.4s ease;
+    }
+    #main-desc, #contact-desc {
+      white-space: pre-line;
+      text-align: justify;
+    }
+    @keyframes fade-in-up {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up { animation: fade-in-up 1s ease forwards; }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink-caret {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: #065f46; }
+    }
+    .typing-code {
+      font-family: 'Source Code Pro', monospace;
+      font-weight: 700;
+      color: #065f46;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: .15em solid #065f46;
+      width: 0;
+      animation: typing 3.5s steps(40, end) forwards, blink-caret 0.7s step-end infinite;
+      font-size: 1.25rem;
+    }
+    #utama {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      padding: 4rem 2rem;
+      background: linear-gradient(to bottom right, #d1fae5, #ffffff);
+    }
+    @media(min-width: 768px) {
+      #utama {
+        flex-direction: row;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 6rem 2rem;
+        gap: 4rem;
+        align-items: flex-start;
+      }
+      #text-content {
+        flex: 1;
+      }
+      .coding-person-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 400px;
+      }
+    }
+    svg.coding-person {
+      width: 250px;
+      height: auto;
+      animation: float-pers 3.5s ease-in-out infinite;
+    }
+    @keyframes float-pers {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .eye {
+      transform-origin: center;
+      animation: blink 5s steps(1) infinite;
+    }
+    @keyframes blink {
+      0%, 5%, 100% { transform: scaleY(1); }
+      6%, 8% { transform: scaleY(0.1); }
+    }
+    .hand {
+      transform-origin: 50% 50%;
+      animation: typing-hand 1.5s infinite ease-in-out alternate;
+    }
+    @keyframes typing-hand {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(10deg); }
+    }
+    a:hover {
+      color: #10b981;
+      font-weight: 800;
+    }
+    section h2, section h3 {
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      border-bottom: 3px solid #10b981;
+      padding-bottom: 0.25rem;
+      max-width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .project-item {
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      will-change: transform;
+      cursor: default;
+      background-color: white;
+    }
+    .project-item:hover {
+      box-shadow: 0 12px 20px rgba(16, 185, 129, 0.4);
+      transform: translateY(-6px);
+      cursor: pointer;
+      z-index: 1;
+      position: relative;
+    }
+    .coding-animation {
+      width: 300px;
+      max-width: 90vw;
+      height: 220px;
+      margin: 20px auto;
+      position: relative;
+      perspective: 600px;
+      animation: float 4s ease-in-out infinite;
+    }
+    .code-block {
+      background: #065f46;
+      border-radius: 16px;
+      padding: 20px;
+      color: #d1fae5;
+      font-family: 'Source Code Pro', monospace;
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.3;
+      box-shadow: 0 12px 30px rgba(6, 95, 70, 0.4);
+      transform-style: preserve-3d;
+      max-width: 100%;
+      overflow-x: auto;
+      white-space: pre;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotateX(0deg) rotateY(0deg); }
+      50% { transform: translateY(-15px) rotateX(8deg) rotateY(15deg); }
+    }
+    .chat-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 320px;
+      max-width: 90vw;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      display: flex;
+      flex-direction: column;
+      z-index: 9999;
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+    }
+    .chat-header {
+      background: #4CAF50;
+      color: white;
+      padding: 14px 18px;
+      font-weight: 700;
+      font-size: 1.125rem;
+      border-radius: 
+
+      padding: 10px 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .chat-input button:hover {
+      background-color: #059669;
+    }
+  </style>
+</head>
+<body id="body" class="bg-gradient-to-b from-green-100 to-white text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 id="nav-title" class="text-xl font-extrabold text-green-700">PORTOFOLIO</h1>
+      <div class="space-x-4 flex items-center">
+        <a href="#utama" id="nav-about" class="text-green-700 hover:text-green-900">Tentang</a>
+        <a href="#projects" id="nav-projects" class="text-green-700 hover:text-green-900">Proyek</a>
+        <a href="#keahlian" id="nav-skills" class="text-green-700 hover:text-green-900">Keahlian</a>
+        <a href="#kontak" id="nav-contact" class="text-green-700 hover:text-green-900">Kontak</a>
+        <select id="language-select" class="ml-4 bg-green-50 border border-green-300 rounded px-2 py-1 text-green-700 cursor-pointer">
+          <option value="id" selected>ID</option>
+          <option value="en">ENG</option>
+        </select>
+        <button id="toggle-dark" class="text-xl ml-2" aria-label="Toggle dark mode">🌙</button>
+        <button id="chat-toggle" class="text-xl ml-2" aria-label="Toggle chat">💬</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="utama">
+    <div id="text-content" class="animate-fade-in-up">
+      <h1 id="main-title" class="text-5xl font-extrabold text-emerald-800 mb-6 leading-tight">Selamat Datang di Portofolio Saya!</h1>
+      <p id="main-desc" class="text-green-700 text-xl mb-10 font-semibold" style="white-space: pre-line; text-align: justify;">
+        Halo, saya Zeinul Muhaemin.<br />
+        Seorang developer yang fokus pada solusi digital efisien dan user-friendly.<br />
+        Saya membangun aplikasi yang bukan hanya berjalan, tapi juga memberi dampak.<br />
+        Bagi saya, setiap baris kode adalah langkah kecil menuju perubahan besar.
+      </p>
+      <a id="btn-projects" href="#projects" class="inline-block bg-green-700 text-white px-8 py-4 rounded-xl shadow-lg hover:bg-green-600 transition font-bold tracking-wide">
+        Lihat Proyek Saya
+      </a>
+      <!-- Animated typing code snippet for visual effect -->
+      <!-- <div class="mt-10">
+        <code class="typing-code" aria-label="Typing code animation">function buildImpact() &#123; return "Kode yang berarti"; &#125;</code> -->
+      </div>
+    </div>
+    <div class="coding-person-container" aria-label="Animasi orang sedang ngoding" role="img">
+      <svg class="coding-person" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" >
+        <!-- Head -->
+        <circle cx="128" cy="80" r="40" fill="#34D399" />
+        <!-- Eyes blinking -->
+        <ellipse class="eye" cx="108" cy="75" rx="7" ry="4" fill="#064e3b" />
+        <ellipse class="eye" cx="148" cy="75" rx="7" ry="4" fill="#064e3b" />
+        <!-- Mouth -->
+        <path d="M108 108 Q128 130 148 108" stroke="#064e3b" stroke-width="3" fill="none" />
+        <!-- Body (shirt) -->
+        <rect x="80" y="120" width="96" height="100" rx="20" ry="20" fill="#10b981" />
+        <!-- Arms with typing animation -->
+        <rect class="hand" x="75" y="130" width="20" height="15" rx="10" ry="10" fill="#059669" />
+        <rect class="hand" x="155" y="130" width="20" height="15" rx="10" ry="10" fill="#059669" />
+        <!-- Laptop base -->
+        <rect x="70" y="170" width="116" height="20" rx="5" ry="5" fill="#065f46" />
+        <!-- Laptop screen -->
+        <rect x="90" y="140" width="80" height="40" rx="5" ry="5" fill="#22c55e" />
+        <!-- Keyboard lines -->
+        <line x1="100" y1="185" x2="120" y2="185" stroke="#34d399" stroke-width="2" />
+        <line x1="130" y1="185" x2="150" y2="185" stroke="#34d399" stroke-width="2" />
+        <line x1="160" y1="185" x2="180" y2="185" stroke="#34d399" stroke-width="2" />
+      </svg>
+    </div>
+  </section>    
+<!-- Coding animation below Hero -->
+<section aria-label="Coding animation example" class="coding-animation">
+  <div class="code-block" role="img" aria-label="Animated code block">
+    <pre id="animated-code"></pre>
+  </div>
+</section>
+
+<script>
+  // Typing animation for code block in the coding animation section
+  const codeBlock = document.getElementById('animated-code');
+  const codeContent = `<html>
+  <body>
+    <h1>Selamat datang!</h1>
+  </body>
+</html>`;
+  let idx = 0;
+
+  function typeCode() {
+    if (idx <= codeContent.length) {
+      codeBlock.textContent = codeContent.substring(0, idx);
+      idx++;
+      setTimeout(typeCode,50); // Adjust typing speed here
+    } else {
+      // Reset after delay for loop animation
+      setTimeout(() => {
+        idx = 0;
+        typeCode();
+      }, 1500);
+    }
+  }
+  typeCode();
+</script>
+
+  <!-- Projects -->
+  <section id="projects" class="bg-white py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h3 id="projects-title" class="text-3xl font-extrabold text-center text-green-700 mb-8 uppercase">Proyek Unggulan</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="project-item p-6 rounded-lg shadow-lg border hover:shadow-xl transition">
+          <h4 id="project-title-0" class="text-xl font-extrabold mb-2 text-green-600 uppercase">E-commerce Website</h4>
+          <p id="project-desc-0" class="text-green-700 font-semibold">Sistem toko online lengkap dengan keranjang, checkout, dan admin panel.</p>
+        </div>
+        <div class="project-item p-6 rounded-lg shadow-lg border hover:shadow-xl transition">
+          <h4 id="project-title-1" class="text-xl font-extrabold mb-2 text-green-600 uppercase">Robot Trading</h4>
+          <p id="project-desc-1" class="text-green-700 font-semibold">Robot trading adalah program komputer yang secara otomatis melakukan transaksi jual beli di pasar finansial, seperti forex, saham, atau kripto, berdasarkan algoritma dan strategi tertentu tanpa campur tangan manusia.</p>
+        </div>
+        <div class="project-item p-6 rounded-lg shadow-lg border hover:shadow-xl transition">
+          <h4 id="project-title-2" class="text-xl font-extrabold mb-2 text-green-600 uppercase">Dashboard Admin</h4>
+          <p id="project-desc-2" class="text-green-700 font-semibold">Tampilan dashboard responsif untuk monitoring data realtime dan manajemen konten.</p>
+        </div>
+        <div class="project-item p-6 rounded-lg shadow-lg border hover:shadow-xl transition">
+          <h4 id="project-title-3" class="text-xl font-extrabold mb-2 text-green-600 uppercase">Portofolio Interaktif</h4>
+          <p id="project-desc-3" class="text-green-700 font-semibold">Web portofolio personal dengan animasi halus dan dark/light mode.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="keahlian" class="py-16 px-6 bg-white text-center">
+    <h2 id="skills-title" class="text-3xl md:text-4xl font-extrabold text-green-700 mb-10 uppercase animate-fade-in-up">Keahlian Saya</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 max-w-5xl mx-auto animate-fade-in-up delay-200">
+      <div class="flex flex-col items-center bg-green-50 p-4 rounded-xl shadow-md hover:shadow-lg transition">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" alt="HTML" class="w-10 h-10 mb-3" />
+        <span class="text-base font-semibold">HTML</span>
+      </div>
+      <div class="flex flex-col items-center bg-green-50 p-4 rounded-xl shadow-md hover:shadow-lg transition">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="CSS" class="w-10 h-10 mb-3" />
+        <span class="text-base font-semibold">CSS</span>
+      </div>
+      <div class="flex flex-col items-center bg-green-50 p-4 rounded-xl shadow-md hover:shadow-lg transition">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JavaScript" class="w-10 h-10 mb-3" />
+        <span class="text-base font-semibold">JavaScript</span>
+      </div>
+      <div class="flex flex-col items-center bg-green-50 p-4 rounded-xl shadow-md hover:shadow-lg transition">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Python" class="w-10 h-10 mb-3" />
+        <span class="text-base font-semibold">Python</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="kontak" class="bg-green-50 py-16 px-6">
+    <div class="max-w-4xl mx-auto text-center animate-fade-in-up">
+      <h2 id="contact-title" class="text-3xl md:text-4xl font-extrabold text-green-700 mb-6 uppercase">Hubungi Saya</h2>
+      <p id="contact-desc" class="text-green-700 mb-10 font-semibold text-lg max-w-2xl mx-auto" style="white-space: pre-line; text-align: justify;">
+        Tertarik bekerja sama atau ingin ngobrol seputar proyek digital? Jangan ragu untuk menghubungi saya melalui email atau WhatsApp.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+        <a href="https://wa.me/6285738948092" target="_blank" class="flex items-center gap-3 bg-green-700 text-white px-6 py-4 rounded-xl shadow hover:bg-green-800 transition font-extrabold w-full sm:w-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20.52 3.48A11.76 11.76 0 0012.02 0C5.39 0 .06 5.38 0 12a11.91 11.91 0 001.64 6.06L0 24l6.22-1.63A11.9 11.9 0 0012 24c6.63 0 12-5.38 12-12a11.83 11.83 0 00-3.48-8.52zM12 21.66a9.6 9.6 0 01-4.92-1.34l-.35-.2-3.69.97.98-3.59-.23-.37a9.5 9.5 0 1117.39-5.65 9.61 9.61 0 01-9.18 10.18zM17.41 14.3c-.29-.14-1.71-.84-1.97-.94s-.46-.14-.65.14-.75.94-.91 1.13-.34.21-.63.07-1.23-.45-2.34-1.44a8.69 8.69 0 01-1.6-2c-.17-.29-.02-.45.12-.59s.29-.34.43-.51a1.9 1.9 0 00.29-.48.54.54 0 000-.51c-.07-.14-.65-1.56-.9-2.14s-.47-.46-.65-.47-.36 0-.55 0a1.06 1.06 0 00-.77.36 3.23 3.23 0 00-1 2.4 5.64 5.64 0 001.2 3.06 13.17 13.17 0 005.08 4.29 5.4 5.4 0 003.29.91 2.83 2.83 0 001.85-.9 2.31 2.31 0 00.52-1.62c-.07-.14-.27-.21-.56-.36z"/>
+          </svg>
+          WhatsApp Saya
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chat AI Section -->
+  <div class="chat-container" id="chat-container" style="display:none;">
+    <div class="chat-header">Chat AI</div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="chat-input">
+      <input type="text" id="user-input" placeholder="Ketik pesan..." autocomplete="off" />
+      <button id="send-button">Kirim</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 text-sm text-gray-500 bg-white border-t">
+    &copy; 2025 Zeinul Muhaemin. All rights reserved.
+  </footer>
+
+  <!-- Script -->
+  <script>
+    // Dark mode toggle
+    const toggleDarkBtn = document.getElementById('toggle-dark');
+    const body = document.body;
+    toggleDarkBtn.addEventListener('click', () => {
+      body.classList.toggle('dark');
+    });
+
+    // Language switcher with multiline support
+    const languageSelect = document.getElementById('language-select');
+    const translations = {
+      id: {
+        navTitle: "PORTOFOLIO",
+        navAbout: "Tentang",
+        navProjects: "Proyek",
+        navSkills: "Keahlian",
+        navContact: "Kontak",
+        mainTitle: "Selamat Datang di Portofolio Saya!",
+        mainDesc: `Halo, saya Zeinul Muhaemin.\nSeorang developer yang fokus pada solusi digital efisien dan user-friendly.\nSaya membangun aplikasi yang bukan hanya berjalan, tapi juga memberi dampak.\nBagi saya, setiap baris kode adalah langkah kecil menuju perubahan besar.`,
+        btnProjects: "Lihat Proyek Saya",
+        projectsTitle: "Proyek Unggulan",
+        contactTitle: "Hubungi Saya",
+        contactDesc: "Tertarik bekerja sama atau ingin ngobrol seputar proyek digital? Jangan ragu untuk menghubungi saya melalui email atau WhatsApp.",
+        projects: [
+          { title: "E-commerce Website", desc: "Sistem toko online lengkap dengan keranjang, checkout, dan admin panel." },
+          { title: "Robot Trading", desc: "Robot trading adalah program komputer yang secara otomatis melakukan transaksi jual beli di pasar finansial, seperti forex, saham, atau kripto, berdasarkan algoritma dan strategi tertentu tanpa campur tangan manusia." },
+          { title: "Dashboard Admin", desc: "Tampilan dashboard responsif untuk monitoring data realtime dan manajemen konten." },
+          { title: "Portofolio Interaktif", desc: "Web portofolio personal dengan animasi halus dan dark/light mode." }
+        ],
+        skillsTitle: "Keahlian Saya"
+      },
+      en: {
+        navTitle: "PORTFOLIO",
+        navAbout: "About",
+        navProjects: "Projects",
+        navSkills: "Skills",
+        navContact: "Contact",
+        mainTitle: "Welcome to My Portfolio!",
+        mainDesc: `Hello, I'm Zeinul Muhaemin.\nA developer focused on efficient and user-friendly digital solutions.\nI build apps that don't just run but make an impact.\nFor me, every line of code is a small step toward big change.`,
+        btnProjects: "See My Projects",
+        projectsTitle: "Featured Projects",
+        contactTitle: "Contact Me",
+        contactDesc: "Interested in collaborating or want to chat about digital projects? Feel free to reach out to me via email or WhatsApp.",
+        projects: [
+          { title: "E-commerce Website", desc: "Complete online store system with cart, checkout, and admin panel." },
+          { title: "Trading Robot", desc: "Automated trading program for forex, stocks, and crypto markets based on algorithms and strategies." },
+          { title: "Admin Dashboard", desc: "Responsive dashboard layout for real-time data monitoring and content management." },
+          { title: "Interactive Portfolio", desc: "Personal portfolio website with smooth animations and dark/light mode." }
+        ],
+        skillsTitle: "My Skills"
+      }
+    };
+
+    function nl2br(str) {
+      return str.replace(/\n/g, '<br />');
+    }
+
+    function updateLanguage(lang) {
+      document.getElementById('nav-title').textContent = translations[lang].navTitle;
+      document.getElementById('nav-about').textContent = translations[lang].navAbout;
+      document.getElementById('nav-projects').textContent = translations[lang].navProjects;
+      document.getElementById('nav-skills').textContent = translations[lang].navSkills;
+      document.getElementById('nav-contact').textContent = translations[lang].navContact;
+      document.getElementById('main-title').textContent = translations[lang].mainTitle;
+      document.getElementById('main-desc').innerHTML = nl2br(translations[lang].mainDesc);
+      document.getElementById('btn-projects').textContent = translations[lang].btnProjects;
+      document.getElementById('projects-title').textContent = translations[lang].projectsTitle;
+      document.getElementById('contact-title').textContent = translations[lang].contactTitle;
+      document.getElementById('contact-desc').innerHTML = nl2br(translations[lang].contactDesc);
+      document.getElementById('skills-title').textContent = translations[lang].skillsTitle;
+
+      translations[lang].projects.forEach((project, i) => {
+        document.getElementById(`project-title-${i}`).textContent = project.title;
+        document.getElementById(`project-desc-${i}`).textContent = project.desc;
+      });
+    }
+
+    languageSelect.addEventListener('change', (e) => {
+      updateLanguage(e.target.value);
+    });
+
+    // Initialize default language
+    updateLanguage(languageSelect.value);
+
+    // Chat robot functionality
+    const chatToggleBtn = document.getElementById('chat-toggle');
+    const chatContainer = document.getElementById('chat-container');
+    const chatMessages = document.getElementById('chat-messages');
+    const userInput = document.getElementById('user-input');
+    const sendButton = document.getElementById('send-button');
+
+    // Toggle chat visibility
+    chatToggleBtn.addEventListener('click', () => {
+      if(chatContainer.style.display === 'none' || chatContainer.style.display === '') {
+        chatContainer.style.display = 'flex';
+        userInput.focus();
+      } else {
+        chatContainer.style.display = 'none';
+      }
+    });
+
+    // Function to add a message to chat
+    function addMessage(content, sender = 'bot') {
+      const messageEl = document.createElement('div');
+      messageEl.classList.add('message', sender);
+      messageEl.textContent = content;
+      chatMessages.appendChild(messageEl);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Simple chatbot responses
+    function getBotResponse(input) {
+  const text = input.toLowerCase().trim();
+
+  if (!text) return "Silakan ketik sesuatu, saya siap membantu! 😊";
+
+  const responses = [
+    {
+      keywords: ['halo', 'hi', 'hai', 'hello', 'selamat pagi', 'selamat siang', 'assalamu'],
+      response: "Halo juga! 👋 Ada yang bisa saya bantu hari ini?"
+    },
+    {
+      keywords: ['siapa kamu', 'kamu siapa', 'kenalan dong', 'apa kamu'],
+      response: "Saya adalah chatbot portofolio interaktif dari Zeinul Muhaemin. Senang berkenalan! 🤖"
+    },
+    {
+      keywords: ['bantuan', 'help', 'bisa bantu', 'tolong', 'minta tolong'],
+      response: "Tentu! Kamu bisa tanya soal proyek, skill, pengalaman, pendidikan, atau kontak saya. 🔧"
+    },
+    {
+      keywords: ['proyek', 'project', 'karya', 'hasil kerja'],
+      response: "Saya punya beberapa proyek seperti website e-commerce, bot trading MT5, dashboard admin, dan portofolio. 🚀"
+    },
+    {
+      keywords: ['skill', 'keahlian', 'kemampuan', 'ahli dalam'],
+      response: "Saya ahli dalam HTML, CSS, JavaScript, Python, Flask, serta integrasi API seperti Tripay & Telegram. 💻"
+    },
+    {
+      keywords: ['pengalaman', 'pernah kerja', 'kerja apa', 'job'],
+      response: "Saya berpengalaman dalam pengembangan web dan aplikasi, termasuk e-commerce, sistem login, dan bot otomatisasi. 📱"
+    },
+    {
+      keywords: ['pendidikan', 'lulusan', 'kuliah', 'universitas'],
+      response: "Saya lulusan Universitas Teknologi Bandung dengan jurusan Teknik Informatika. 🎓"
+    },
+    {
+      keywords: ['terima kasih', 'thanks', 'makasih', 'thank you'],
+      response: "Sama-sama! Senang bisa membantu kamu. 😊"
+    },
+    {
+      keywords: ['portofolio', 'portfolio', 'hasil', 'contoh kerja'],
+      response: "Kamu bisa melihat portofolio saya di bagian Proyek. Semuanya ditampilkan secara interaktif! 📂"
+    },
+    {
+      keywords: ['kontak', 'hubungi', 'email', 'whatsapp'],
+      response: "Hubungi saya via email di zeinul08gmail.com atau gunakan form kontak WhatsApp di website ini. 📩"
+    },
+    {
+      keywords: ['apa kabar', 'how are you', 'gimana kabarnya'],
+      response: "Saya selalu dalam semangat tinggi untuk membantu! 😄 Kamu sendiri, gimana kabarnya?"
+    },
+    {
+      keywords: ['bahasa inggris', 'english', 'speak english'],
+      response: "Yes, I can also communicate in English. Just ask me anything! 🌐"
+    }
+  ];
+
+  // Cari respons dari keyword
+  for (const rule of responses) {
+    if (rule.keywords.some(k => text.includes(k))) {
+      return rule.response;
+    }
+  }
+
+  // Jika kalimat diakhiri tanda tanya → pertanyaan umum
+  if (text.endsWith('?')) {
+    return "Pertanyaan yang menarik! Mungkin kamu bisa tanyakan lebih spesifik soal proyek, keahlian, atau kontak saya. 😊";
+  }
+
+  // Fallback cerdas
+  return "Saya belum memahami maksudmu. Coba gunakan kata lain, atau tanyakan langsung soal keahlian atau proyek saya ya! 🙏";
+}
+
+
+    // Handle sending user message and bot reply
+    function sendMessage() {
+      const text = userInput.value.trim();
+      if (text === '') return;
+      addMessage(text, 'user');
+      userInput.value = '';
+      setTimeout(() => {
+        const botReply = getBotResponse(text);
+        addMessage(botReply, 'bot');
+      }, 700);
+    }
+  
+
+    sendButton.addEventListener('click', sendMessage);
+    userInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+   // Disable right-click
+  document.addEventListener('contextmenu', event => event.preventDefault());
+
+  // Disable F12, Ctrl+Shift+I, Ctrl+U
+  document.onkeydown = function(e) {
+    if (
+      e.keyCode === 123 || // F12
+      (e.ctrlKey && e.shiftKey && e.keyCode === 73) || // Ctrl+Shift+I
+      (e.ctrlKey && e.keyCode === 85) // Ctrl+U
+    ) {
+      return false;
+    }
+  };
+  </script>
+</body>
+</html>
